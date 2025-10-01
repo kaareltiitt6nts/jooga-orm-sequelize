@@ -19,15 +19,23 @@ export const getArticleBySlug = (req, res) => {
     where: {
       slug: req.params.slug
     },
-    include: {
-      model: models.Authors
-    }
+    include: [
+      {
+        model: models.Authors
+      },
+      {
+        model: models.Tag,
+        through: {
+          model: models.ArticleTag
+        }
+      }
+    ]
   })
-  .then(data => {
-    return res.status(200).json({ data })
-  })
-  .catch(err => {
-    console.log(err)
-    return res.status(500).json({ message: err })
-  })
+    .then(data => {
+      return res.status(200).json({ data })
+    })
+    .catch(err => {
+      console.log(err)
+      return res.status(500).json({ message: err })
+    })
 }
