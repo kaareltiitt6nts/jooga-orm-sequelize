@@ -2,33 +2,32 @@
 const {
   Model
 } = require('sequelize');
+const { Sequelize } = require('.');
 module.exports = (sequelize, DataTypes) => {
-  class Author extends Model {
+  class Tag extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.hasMany(models.Articles, {
-        foreignKey: "AuthorId"
-      })
+      
     }
   }
-  Author.init({
+  Tag.init({
     id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-      allowNull: false
-    },
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false
+      },
     name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
+        type: DataTypes.STRING,
+        allowNull: false
+      }
   }, {
     sequelize,
-    modelName: 'Authors',
+    modelName: 'Tag',
   });
-  return Author;
+  return Tag;
 };

@@ -33,7 +33,6 @@ module.exports = {
       queryInterface.changeColumn("Articles", "author_id", {
         type: Sequelize.INTEGER
       }),
-      
     ])
   },
 

@@ -1,8 +1,7 @@
 import express from "express"
+import { getAllArticles, getArticleBySlug } from "../controllers/articleController.js"
 
 export const articleRouter = express.Router()
 
-articleRouter.get("/:slug", (req, res) => {
-  console.log(req.params.slug)
-  res.end()
-})
+articleRouter.get("/", getAllArticles)
+articleRouter.get("/:slug", getArticleBySlug)
